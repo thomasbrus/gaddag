@@ -1,33 +1,40 @@
 # encoding: utf-8
 
-require 'trie'
+require_relative 'gaddag/arc'
+require_relative 'gaddag/node'
 
 class GADDAG
-  KEY_DELIMITER = '>'.freeze
+  DELIMITER = '♢'.freeze
 
   def initialize
-    @trie = Trie.new
+    @root = Node.new
   end
 
   def add(word)
-    self.tap { generate_keys(word) { |key| @trie.insert(key, word) } }
+    @root.create_final_path(word.reverse.chars)
+
+    generate_delimited_words(word).each do |word|
+      reversed_prefix, suffix = word.split(DELIMITER)
+      last_prefix_node = @root.create_path(reversed_prefix.chars)
+      last_prefix_node.create_final_path([DELIMITER] + suffix.chars)
+    end
   end
 
-  def remove(word)
-    self.tap { |w| @trie.delete_value(w) }
-  end
+  # def remove(word)
+  #   ...
+  # end
 
-  def find(substring)
-    @trie.find_prefix(substring.reverse).values
-  end
+  # def find(substring)
+  #   ...
+  # end
 
   private
 
-  def generate_keys(word)
-    1.upto(word.length) do |index|
+  def generate_delimited_words(word)
+    1.upto(word.length - 1).map do |index|
       reversed_prefix = word.slice(0, index).reverse
       suffix = word.slice(index, word.length - index)
-      yield reversed_prefix << KEY_DELIMITER << suffix
+      reversed_prefix << DELIMITER << suffix
     end
   end
 end
