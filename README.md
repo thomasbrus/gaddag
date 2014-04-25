@@ -1,8 +1,8 @@
-# Ruby implementation of GADDAG
+# Ruby implementation of a GADDAG
 
-A [*GADDAG*](http://en.wikipedia.org/wiki/GADDAG) is a data structure that
+A [GADDAG](http://en.wikipedia.org/wiki/GADDAG) is a data structure that
 allows for fast lookup of words by substring. It is a directed acyclic graph, where
-each word can be constructed from the root via any of its substrings. Its main application
+each word can be constructed from the root via any of its reversed prefixes. Its main application
 is move generation in Scrabble. The data structure is explained in more detail in
 [the original research paper](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf).
 
