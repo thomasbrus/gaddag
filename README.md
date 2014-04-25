@@ -1,0 +1,39 @@
+# Ruby implementation of GADDAG
+
+A [*GADDAG*](http://en.wikipedia.org/wiki/GADDAG) is a data structure that
+allows for fast lookup of words by substring. It is a directed acyclic graph, where
+each word can be constructed from the root via any of its substrings. Its main application
+is move generation in Scrabble. The data structure is explained in more detail in
+[the original research paper](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf).
+
+## Usage
+
+Initializing the GADDAG is simple:
+
+```ruby
+require 'gaddag'
+gaddag = Gaddag.new
+```
+
+It gets interesting after adding some words to it:
+
+```ruby
+IO.foreach('/usr/share/dict/words').map(&:chomp).each do |word|
+  gaddag.add(word) # => #<Gaddag:0x007fc6c24367b0 ... >
+end
+```
+
+It is possible to remove words as well. If no matching word was found,
+`nil` is returned.
+
+```ruby
+gaddag.remove('television') # => 'television'
+gaddag.remove('fargo') # => nil
+```
+
+In order to find all words that contain a given substring,
+use the `find` method:
+
+```ruby
+gaddag.find('elevi') => # ["teleview", "television", "televisional", ...]
+```
