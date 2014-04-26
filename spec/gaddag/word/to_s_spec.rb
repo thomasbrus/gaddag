@@ -3,10 +3,7 @@ require 'gaddag'
 describe GADDAG::Word, '#to_s' do
   context 'when the word is empty' do
     let(:word) { GADDAG::Word.new([]) }
-
-    it 'returns an empty string' do
-      expect(word.to_s).to be_empty
-    end
+    specify { expect(word.to_s).to be_empty }
   end
 
   context 'when the word is not empty' do
