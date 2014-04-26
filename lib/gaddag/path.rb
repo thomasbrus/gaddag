@@ -9,7 +9,7 @@ class GADDAG
     # The letters that make up this GADDAG path
     attr_reader :letters
 
-    # Two paths are equal if they include the same letters in the same order
+    # Two paths are equal if they contain the same letters in the same order
     include Equalizer.new(:letters)
 
     # The path delimiter that seperates the reversed prefix and the suffix
@@ -26,6 +26,7 @@ class GADDAG
     # Returns the reversed prefix of this path
     # @return [Array<String>] the first portion of this path: the reversed prefix
     def reversed_prefix_letters
+      return [] if @letters.empty?
       @letters.join.split(DELIMITER).first.chars
     end
 
