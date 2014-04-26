@@ -8,7 +8,7 @@ describe GADDAG::Path, '#==' do
       specify { expect(path).to eq(other_path) }
     end
 
-    context 'when the letters are in different order' do
+    context 'when the letters are in a different order' do
       let(:path) { GADDAG::Path.new(%w(B ♢ R E A K)) }
       let(:other_path) { GADDAG::Path.new(%w(R B ♢ E A K)) }
       specify { expect(path).to_not eq(other_path) }
