@@ -26,7 +26,6 @@ class GADDAG
     # Returns the reversed prefix of this path
     # @return [Array<String>] the first portion of this path: the reversed prefix
     def reversed_prefix_letters
-      return @letters unless include_delimiter?
       @letters.join.split(DELIMITER).first.chars
     end
 
