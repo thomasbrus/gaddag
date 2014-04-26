@@ -55,7 +55,7 @@ class GADDAG
       @outgoing_arcs.fetch(letter).destination
     end
 
-    # Recursively follows a list of letters (see #follow_arc)
+    # Recursively follows a list of letters
     # @param letters [Array<String>] the letters to be followed
     # @return [Node] the destination node that the path of letters leads to
     # @see #follow_arc
