@@ -16,11 +16,14 @@ gaddag = GADDAG.new
 ```
 
 Adding words is done via the `add` method. This will expand the graph with paths for all
-the reversed prefixes of the word.
+the reversed prefixes of the word. Note that this may take some time when adding
+a large number of words.
 
 ```ruby
 IO.foreach('/usr/share/dict/words').map(&:chomp).each do |word|
-  gaddag.add(word) # => #<Gaddag:0x007fc6c24367b0 ... >
+  if word.length == 10
+    gaddag.add(word) # => #<Gaddag:0x007fc6c24367b0 ... >
+  end
 end
 ```
 
@@ -35,5 +38,5 @@ gaddag.remove('fargo') # => nil
 In order to find all words that contain a given substring, use the `find` method:
 
 ```ruby
-gaddag.find('elevi') => # ["teleview", "television", "televisional", ...]
+gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 ```
