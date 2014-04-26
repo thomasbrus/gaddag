@@ -26,6 +26,12 @@ class GADDAG
     def add_final_letter(letter)
       @final_letters.add(letter)
     end
+
+    # Returns all paths from this arc that are final
+    # @return [Array<Path>] a list of final paths that start at this arc
+    def find_paths
+      final_letters.map { |final_letter| [final_letter] } + destination.find_paths
+    end
   end
 
 end

@@ -63,6 +63,15 @@ class GADDAG
       return self if letters.empty?
       follow_arc(letters[0]).follow_arcs(letters[1..-1])
     end
+
+    # Returns all paths from this node that are final
+    # @return [Array<Path>] a list of final paths
+    def find_paths
+      return [] if @outgoing_arcs.empty?
+      @outgoing_arcs.map { |letter, arc|
+        arc.find_paths.map { |path| Path.new([letter] + path) }
+      }.flatten(1)
+    end
   end
 
 end
