@@ -1,6 +1,11 @@
 require 'gaddag'
 
 describe GADDAG::Path, '#suffix_letters' do
+  context 'when the path is empty' do
+    subject { GADDAG::Path.new([]) }
+    specify { expect(subject.to_s).to be_empty }
+  end
+
   context 'when the path includes a delimiter' do
     subject { GADDAG::Path.new(%w(R B ♢ E A K)) }
 
