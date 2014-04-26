@@ -1,11 +1,16 @@
 # encoding: utf-8
 
+require 'equalizer'
+
 class GADDAG
 
   # Represents a (final) path within the GADDAG data structure
   class Path
     # The letters that make up this GADDAG path
     attr_reader :letters
+
+    # Two paths are equal if they include the same letters in the same order
+    include Equalizer.new(:letters)
 
     # The path delimiter that seperates the reversed prefix and the suffix
     DELIMITER = '♢'.freeze
