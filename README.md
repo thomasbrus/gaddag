@@ -1,4 +1,4 @@
-# Ruby implementation of a GADDAG
+# GADDAG data structure in Ruby
 
 A [GADDAG](http://en.wikipedia.org/wiki/GADDAG) is a data structure that
 allows for fast lookup of words by substring. It is a directed acyclic graph, where
