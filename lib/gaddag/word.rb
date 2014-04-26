@@ -27,7 +27,7 @@ class GADDAG
     def to_delimited_paths
       1.upto(letters.length - 1).map do |index|
         reversed_prefix = @letters.slice(0, index).reverse
-        suffix = @letters.slice(index, @letters.count - index)
+        suffix = @letters.slice(index, @letters.count)
         Path.new(reversed_prefix + [Path::DELIMITER] + suffix)
       end
     end
