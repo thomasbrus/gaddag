@@ -1,11 +1,16 @@
 # encoding: utf-8
 
+require 'equalizer'
+
 class GADDAG
 
   # Represents a word in the GADDAG data structure
   class Word
     # The letters that make up this word
     attr_reader :letters
+
+    # Two words are equal if they contain the same letters in the same order
+    include Equalizer.new(:letters)
 
     # Initializes a GADDAG word
     # @param letters [Array<String>] an ordered list of letters of which
