@@ -18,11 +18,11 @@ class GADDAG
 
   # Adds a word to the GADDAG
   # @param word [String] the word to be added
-  # @return [GADDAG] the GADDAG instance itself
+  # @return [GADDAG] the GADDAG instance
   def add(word)
     @root.create_final_path(word.reverse.chars)
 
-    Word.new(word.chars).to_paths.each do |path|
+    Word.new(word.chars).to_delimited_paths.each do |path|
       node = @root.create_path(path.reversed_prefix_letters)
       node.create_final_path([Path::DELIMITER] + path.suffix_letters)
     end

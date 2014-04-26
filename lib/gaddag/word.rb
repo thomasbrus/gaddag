@@ -21,10 +21,10 @@ class GADDAG
       @letters.join
     end
 
-    # Construct a list of GADDAG paths from this word
+    # Construct a list of delimited GADDAG paths from this word
     # @return [Array<Path>] a list of paths, each containing a reversed prefix,
-    # a delimiter, and an optional suffix: REV(PREFIX) ♢ SUFFIX
-    def to_paths
+    # a delimiter, and a suffix: REV(PREFIX) ♢ SUFFIX
+    def to_delimited_paths
       1.upto(letters.length - 1).map do |index|
         reversed_prefix = @letters.slice(0, index).reverse
         suffix = @letters.slice(index, @letters.count - index)
