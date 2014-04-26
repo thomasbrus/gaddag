@@ -1,6 +1,11 @@
 require 'gaddag'
 
 describe GADDAG::Path, '#reversed_prefix_letters' do
+  context 'when the path is empty' do
+    subject { GADDAG::Path.new([]) }
+    specify { expect(subject.reversed_prefix_letters).to be_empty }
+  end
+
   context 'when the path includes a delimiter' do
     subject { GADDAG::Path.new(%w(R B ♢ E A K)) }
 
