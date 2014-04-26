@@ -15,7 +15,8 @@ require 'gaddag'
 gaddag = Gaddag.new
 ```
 
-It gets interesting after adding some words to it:
+Adding words is done via the `add` method. This will expand the graph with paths for all
+the reversed prefixes of the word.
 
 ```ruby
 IO.foreach('/usr/share/dict/words').map(&:chomp).each do |word|
@@ -31,8 +32,7 @@ gaddag.remove('television') # => 'television'
 gaddag.remove('fargo') # => nil
 ```
 
-In order to find all words that contain a given substring,
-use the `find` method:
+In order to find all words that contain a given substring, use the `find` method:
 
 ```ruby
 gaddag.find('elevi') => # ["teleview", "television", "televisional", ...]
