@@ -4,6 +4,12 @@ class GADDAG
 
   # Represents a node in the GADDAG data structure
   class Node
+    # A mapping of letters to arcs
+    attr_reader :outgoing_arcs
+
+    # Two nodes are equal if they have the same set of outgoing arcs
+    include Equalizer.new(:outgoing_arcs)
+
     # Initializes a GADDAG node
     # @return [Node]
     def initialize

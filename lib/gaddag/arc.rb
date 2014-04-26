@@ -12,6 +12,10 @@ class GADDAG
     # A set of letters which form a word after being appended to the letter path
     attr_reader :final_letters
 
+    # Two arcs are equal if they point to the same destination node and contain
+    # the same set of final letters
+    include Equalizer.new(:destination, :final_letters)
+
     # Initializes a GADDAG arc
     # @param destination [Node] the destination node
     # @return [Arc]
