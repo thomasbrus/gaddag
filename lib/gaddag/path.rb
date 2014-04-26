@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require 'equalizer'
-
 class GADDAG
 
   # Represents a (final) path within the GADDAG data structure

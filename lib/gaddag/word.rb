@@ -1,7 +1,5 @@
 # encoding: utf-8
 
-require 'equalizer'
-
 class GADDAG
 
   # Represents a word in the GADDAG data structure
