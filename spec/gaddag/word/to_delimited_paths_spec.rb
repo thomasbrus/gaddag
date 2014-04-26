@@ -2,24 +2,18 @@ require 'gaddag'
 
 describe GADDAG::Word, '#to_delimited_paths' do
   context 'when the word is empty' do
-    let(:word) { GADDAG::Word.new([]) }
-
-    it 'returns an empty list' do
-      expect(word.to_delimited_paths).to be_empty
-    end
+    subject { GADDAG::Word.new([]) }
+    specify { expect(subject.to_delimited_paths).to be_empty }
   end
 
   context 'when the word consists of a single letter' do
-    let(:word) { GADDAG::Word.new(%w(A)) }
-
-    it 'returns an empty list' do
-      expect(word.to_delimited_paths).to be_empty
-    end
+    subject { GADDAG::Word.new(%w(A)) }
+    specify { expect(subject.to_delimited_paths).to be_empty }
   end
 
   context 'when the word consists of multiple letters' do
-    let(:word) { GADDAG::Word.new(%w(B R E A K)) }
-    let(:delimited_paths) { word.to_delimited_paths }
+    subject { GADDAG::Word.new(%w(B R E A K)) }
+    let(:delimited_paths) { subject.to_delimited_paths }
 
     it 'returns a list with n-1 paths' do
       expect(delimited_paths.count).to eq(4)
