@@ -14,7 +14,7 @@ class GADDAG
 
     # Two arcs are equal if they point to the same destination node and contain
     # the same set of final letters
-    include Equalizer.new(:destination, :final_letters)
+    send :include, Equalizer.new(:destination, :final_letters)
 
     # Initializes a GADDAG arc
     # @param destination [Node] the destination node
