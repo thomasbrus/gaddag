@@ -33,8 +33,8 @@ class GADDAG
 
     # Returns all paths from this arc that are final
     # @return [Array<Path>] a list of final paths that start at this arc
-    def find_paths
-      final_letters.map { |final_letter| [final_letter] } + destination.find_paths
+    def find_final_paths
+      final_letters.map { |final_letter| Path.new([final_letter]) } + destination.find_final_paths
     end
   end
 
