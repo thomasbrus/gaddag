@@ -12,7 +12,7 @@ Initializing the GADDAG is simple:
 
 ```ruby
 require 'gaddag'
-gaddag = Gaddag.new
+gaddag = GADDAG.new
 ```
 
 Adding words is done via the `add` method. This will expand the graph with paths for all
