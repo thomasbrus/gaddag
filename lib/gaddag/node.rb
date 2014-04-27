@@ -70,7 +70,9 @@ class GADDAG
       follow_arc(letters[0]).follow_arcs(letters[1..-1])
     end
 
-    # Returns all paths from this node that are final
+    # Returns all paths from this node that are final. The set of final paths are
+    # all paths for which the last arc includes a final letter. For each final letter
+    # a seperate path is created.
     # @return [Array<Path>] a list of final paths
     def find_final_paths
       return [] if @outgoing_arcs.empty?
