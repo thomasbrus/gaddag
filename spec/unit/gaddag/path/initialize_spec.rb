@@ -3,7 +3,7 @@
 require 'gaddag'
 
 describe GADDAG::Path, '#initialize' do
-  let(:letters) { %w(B ♢ R E A K) }
+  let(:letters) { %w[B ♢ R E A K] }
   subject { GADDAG::Path.new(letters) }
 
   it 'stores the list of letters' do

@@ -9,7 +9,7 @@ describe GADDAG::Path, '#to_s' do
   end
 
   context 'when the path is not empty' do
-    subject { GADDAG::Path.new(%w(B ♢ R E A K)) }
+    subject { GADDAG::Path.new(%w[B ♢ R E A K]) }
 
     it 'concatenates the letters in this path, delimited by \' > \'' do
       expect(subject.to_s).to eq('B > ♢ > R > E > A > K')
