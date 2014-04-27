@@ -6,7 +6,7 @@ require 'shared/unit/gaddag/arc_context'
 describe GADDAG::Arc, '#initialize' do
   include_context GADDAG::Arc
 
-  it 'initializes an empty final letters set' do
+  it 'initializes an empty set of final letters' do
     expect(subject.final_letters).to be_empty
   end
 
