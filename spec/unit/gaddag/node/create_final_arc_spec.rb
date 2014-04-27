@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'gaddag'
 
 describe GADDAG::Node, '#create_final_arc' do

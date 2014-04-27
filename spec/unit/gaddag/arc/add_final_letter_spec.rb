@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'gaddag'
 require 'shared/unit/gaddag/arc_context'
 

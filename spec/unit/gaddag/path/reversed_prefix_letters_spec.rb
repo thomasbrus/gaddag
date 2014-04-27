@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'gaddag'
 
 describe GADDAG::Path, '#reversed_prefix_letters' do

@@ -34,7 +34,7 @@ class GADDAG
       create_arc(letter, destination).tap { |arc| arc.add_final_letter(final_letter) }
     end
 
-    # Recursively creates a path for a list of letters and optional destination nodes
+    # Creates a path for a list of letters and optional destination nodes
     # @param letters [Array<String>] the letters for which the path should be build
     # @param destinations [Array<Node>] the destination nodes which the path should visit
     # @return [Node] the lastly created destination ode
@@ -44,7 +44,7 @@ class GADDAG
       end
     end
 
-    # Recursively creates a path for a list of letters and optional destination nodes,
+    # Creates a path for a list of letters and optional destination nodes,
     # ommiting the last node, and marking the last letter as final
     # @see #create_path
     def create_final_path(letters, destinations = [])
@@ -74,9 +74,9 @@ class GADDAG
     # @return [Array<Path>] a list of final paths
     def find_final_paths
       return [] if @outgoing_arcs.empty?
-      @outgoing_arcs.map { |letter, arc|
+      @outgoing_arcs.map do |letter, arc|
         arc.find_final_paths.map { |path| Path.new([letter] + path) }
-      }.flatten(1)
+      end.flatten(1)
     end
   end
 

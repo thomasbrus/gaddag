@@ -1,3 +1,5 @@
+# encoding: utf-8
+
 require 'gaddag'
 
 describe GADDAG::Path, '#include_delimiter?' do
