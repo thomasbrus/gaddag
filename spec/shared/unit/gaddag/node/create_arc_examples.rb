@@ -4,8 +4,11 @@ shared_examples 'GADDAG::Node#create_arc' do
   let(:letter) { 'L' }
   let(:destination) { GADDAG::Node.new }
 
+  let(:create_arc) { ->(*args) { subject.create_arc(*args) } }
+
   let(:arc) { create_arc.call(letter) }
   let(:another_arc) { create_arc.call(letter) }
+
   let(:arc_with_destination) { create_arc.call(letter, destination) }
 
   it 'returns the newly created arc' do
