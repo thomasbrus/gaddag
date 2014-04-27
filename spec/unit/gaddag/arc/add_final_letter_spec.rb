@@ -1,7 +1,8 @@
 require 'gaddag'
+require 'shared/unit/gaddag/arc_context'
 
 describe GADDAG::Arc, '#add_final_letter' do
-  subject { GADDAG::Arc.new(GADDAG::Node.new) }
+  include_context GADDAG::Arc
 
   context 'when the arc includes no final letters' do
     context 'when adding a final letter' do
