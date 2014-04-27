@@ -39,8 +39,8 @@ class GADDAG
     # @param destinations [Array<Node>] the destination nodes which the path should visit
     # @return [Node] the lastly created destination ode
     def create_path(letters, destinations = [])
-      letters.each_with_index.inject(self) do |node, (letter, index)|
-        node.create_arc(letter, destinations[index] || Node.new).destination
+      letters.zip(destinations).inject(self) do |node, (letter, destination)|
+        node.create_arc(letter, destination || Node.new).destination
       end
     end
 
