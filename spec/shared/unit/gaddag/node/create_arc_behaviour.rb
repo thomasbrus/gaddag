@@ -1,6 +1,6 @@
 # encoding: utf-8
 
-shared_examples 'GADDAG::Node#create_arc' do
+shared_examples 'GADDAG::Node#create_arc/behaviour' do
   let(:letter) { 'L' }
   let(:destination) { GADDAG::Node.new }
 
