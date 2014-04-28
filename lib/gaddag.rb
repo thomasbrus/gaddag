@@ -25,8 +25,7 @@ class GADDAG
     @root.create_final_path(word.reverse.chars)
 
     Word.new(word.chars).to_delimited_paths.each do |path|
-      node = @root.create_path(path.reversed_prefix_letters)
-      node.create_final_path([Path::DELIMITER] + path.suffix_letters)
+      @root.create_final_path(path.letters)
     end
 
     self
@@ -34,7 +33,7 @@ class GADDAG
 
   # Finds all words that contain the given substring
   # @param substring [String] the substring to search for
-  # @return [Array<Word>] all matching words
+  # @return [Array<String>] all matching words
   def find(substring)
     reversed_prefix_letters = substring.reverse.chars
     @root.follow_arcs(reversed_prefix_letters).find_final_paths.map do |path|
