@@ -48,7 +48,8 @@ class GADDAG
     end
 
     # Coerces into an Array.
-    # @example ['K', 'E'] + Path.new(%w(A R B)) # => ['K', 'E', 'A', 'R', 'B']
+    # @example
+    #   ['K', 'E'] + Path.new(%w(A R B)) # => ['K', 'E', 'A', 'R', 'B']
     # @return [Array<String>] the letters in this path
     def to_ary
       @letters
