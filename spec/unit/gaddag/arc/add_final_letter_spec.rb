@@ -4,7 +4,7 @@ require 'gaddag'
 require 'shared/unit/gaddag/arc_context'
 
 describe GADDAG::Arc, '#add_final_letter' do
-  include_context GADDAG::Arc
+  include_context 'GADDAG::Arc/context'
 
   context 'when adding a final letter' do
     before { subject.add_final_letter('K') }

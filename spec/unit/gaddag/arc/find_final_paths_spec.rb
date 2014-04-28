@@ -4,7 +4,7 @@ require 'gaddag'
 require 'shared/unit/gaddag/arc_context'
 
 describe GADDAG::Arc, '#find_final_paths' do
-  include_context GADDAG::Arc
+  include_context 'GADDAG::Arc/context'
 
   let(:first_final_path) { GADDAG::Path.new(%w[A B C]) }
   let(:second_final_path) { GADDAG::Path.new(%w[D E F]) }
