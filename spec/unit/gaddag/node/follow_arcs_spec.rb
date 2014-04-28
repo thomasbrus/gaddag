@@ -1,7 +1,6 @@
 # encoding: utf-8
 
 require 'gaddag'
-require 'shared/unit/gaddag/node/follow_arc_context'
 
 describe GADDAG::Node, '#follow_arcs' do
   subject { GADDAG::Node.new }
@@ -9,18 +8,10 @@ describe GADDAG::Node, '#follow_arcs' do
   let(:letter) { 'L' }
   let(:destinations) { GADDAG::Node.new }
 
-  include_context 'GADDAG::Node#follow_arc/context'
-
-  def create_path(node, letters, destinations = [])
-    letters.zip(destinations).inject(node) do |current_node, (letter, destination)|
-      create_arc(current_node, letter, destination || GADDAG::Node.new).destination
-    end
-  end
-
   context 'when the path for the given letters exists' do
     context 'when given an empty path of letters' do
       let(:letters) { [] }
-      before { create_path(subject, letters) }
+      before { subject.create_path(letters) }
 
       it 'returns itself' do
         expect(subject.follow_arcs(letters)).to equal(subject)
@@ -30,7 +21,7 @@ describe GADDAG::Node, '#follow_arcs' do
     context 'when given a path of letters' do
       let(:letters) { %w[A B C D] }
       let(:destinations) { 4.times.map { GADDAG::Node.new } }
-      before { create_path(subject, letters, destinations) }
+      before { subject.create_path(letters, destinations) }
 
       it 'returns the destination node that the path of letters leads to' do
         expect(subject.follow_arcs(letters)).to equal(destinations.last)
@@ -41,7 +32,7 @@ describe GADDAG::Node, '#follow_arcs' do
   context 'when the path for the given letters does not exist' do
     let(:letters) { %w[A B C D] }
     let(:other_letters) { %w[A X Y D] }
-    before { create_path(subject, letters) }
+    before { subject.create_path(letters) }
 
     it 'raises an error indicating that no such path exists' do
       expect { subject.follow_arcs(other_letters) }.to raise_error(KeyError)

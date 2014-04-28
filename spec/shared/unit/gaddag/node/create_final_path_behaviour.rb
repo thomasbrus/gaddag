@@ -12,15 +12,15 @@ shared_examples 'GADDAG::Node#create_final_path/behaviour' do
   let(:second_last_letter) { letters[-2] }
 
   it 'creates the path for the given letters up till the second last letter' do
-    expect { follow_arcs(subject, letters_without_last_one) }.to_not raise_error
+    expect { subject.follow_arcs(letters_without_last_one) }.to_not raise_error
   end
 
   it 'does not create an arc for the last letter' do
-    expect { follow_arcs(subject, letters) }.to raise_error(KeyError)
+    expect { subject.follow_arcs(letters) }.to raise_error(KeyError)
   end
 
   it 'adds the last letter to the last arc as final letter' do
-    expect(follow_arcs(subject, letters_without_last_two).outgoing_arcs).to eq({
+    expect(subject.follow_arcs(letters_without_last_two).outgoing_arcs).to eq({
       second_last_letter.to_sym => GADDAG::Arc.new(GADDAG::Node.new).tap do |arc|
         arc.add_final_letter(last_letter)
       end
@@ -28,6 +28,6 @@ shared_examples 'GADDAG::Node#create_final_path/behaviour' do
   end
 
   it 'returns the last created node' do
-    expect(final_node).to equal(follow_arcs(subject, letters_without_last_one))
+    expect(final_node).to equal(subject.follow_arcs(letters_without_last_one))
   end
 end
