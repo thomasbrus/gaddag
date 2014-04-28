@@ -17,15 +17,13 @@ describe GADDAG::Word, '#to_delimited_paths' do
     subject { GADDAG::Word.new(%w[B R E A K]) }
     let(:delimited_paths) { subject.to_delimited_paths }
 
-    it 'returns a list with n-1 paths' do
-      expect(delimited_paths.count).to eq(4)
-    end
-
     it 'returns a list of delimited paths' do
-      expect(delimited_paths).to include(GADDAG::Path.new(%w[B ♢ R E A K]))
-      expect(delimited_paths).to include(GADDAG::Path.new(%w[R B ♢ E A K]))
-      expect(delimited_paths).to include(GADDAG::Path.new(%w[E R B ♢ A K]))
-      expect(delimited_paths).to include(GADDAG::Path.new(%w[A E R B ♢ K]))
+      expect(delimited_paths).to match_array([
+        GADDAG::Path.new(%w[B] + [GADDAG::Path::DELIMITER] + %w[R E A K]),
+        GADDAG::Path.new(%w[R B] + [GADDAG::Path::DELIMITER] + %w[E A K]),
+        GADDAG::Path.new(%w[E R B] + [GADDAG::Path::DELIMITER] + %w[A K]),
+        GADDAG::Path.new(%w[A E R B] + [GADDAG::Path::DELIMITER] + %w[K])
+      ])
     end
   end
 end

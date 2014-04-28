@@ -9,7 +9,7 @@ describe GADDAG::Path, '#reversed_prefix_letters' do
   end
 
   context 'when the path includes a delimiter' do
-    subject { GADDAG::Path.new(%w[R B ♢ E A K]) }
+    subject { GADDAG::Path.new(%w[R B] + [GADDAG::Path::DELIMITER] + %w[E A K]) }
 
     it 'returns an ordered list of letters that occur before the delimiter' do
       expect(subject.reversed_prefix_letters).to eq(%w[R B])

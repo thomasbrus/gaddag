@@ -4,7 +4,7 @@ require 'gaddag'
 
 describe GADDAG::Path, '#include_delimiter?' do
   context 'when the path includes a delimiter' do
-    subject { GADDAG::Path.new(%w[B ♢ R E A K]) }
+    subject { GADDAG::Path.new(%w[R B] + [GADDAG::Path::DELIMITER] + %w[E A K]) }
     specify { expect(subject.include_delimiter?).to be_true }
   end
 
