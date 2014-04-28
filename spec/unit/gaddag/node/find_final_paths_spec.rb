@@ -34,5 +34,19 @@ describe GADDAG::Node, '#find_final_paths' do
         expect(final_paths).to eq([GADDAG::Path.new(%w[A B C D])])
       end
     end
+
+    context 'when two final paths exist for the same prefix' do
+      before do
+        subject.create_final_path(%w[F I N D])
+        subject.create_final_path(%w[F I N D E R])
+      end
+
+      it 'returns both paths' do
+        expect(final_paths).to match_array([
+          GADDAG::Path.new(%w[F I N D]),
+          GADDAG::Path.new(%w[F I N D E R]),
+        ])
+      end
+    end
   end
 end
