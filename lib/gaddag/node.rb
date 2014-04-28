@@ -23,7 +23,7 @@ class GADDAG
     # @return [Arc] the newly created arc or an existing arc if one already
     # exists for this letter
     def create_arc(letter, destination = Node.new)
-      @outgoing_arcs[letter] ||= Arc.new(destination)
+      @outgoing_arcs[letter.to_sym] ||= Arc.new(destination)
     end
 
     # Creates a final outgoing arc for a letter to a destination node. Effectively
@@ -61,7 +61,7 @@ class GADDAG
     # @raise [KeyError] if no outgoing arc exists for the given letter
     # @return [Node] the destination node that the arc for this letter leads to
     def follow_arc(letter)
-      @outgoing_arcs.fetch(letter).destination
+      @outgoing_arcs.fetch(letter.to_sym).destination
     end
 
     # Recursively follows a list of letters
@@ -78,8 +78,8 @@ class GADDAG
     # a seperate path is created.
     # @return [Array<Path>] a list of final paths
     def find_final_paths
-      @outgoing_arcs.map do |letter, arc|
-        arc.find_final_paths.map { |path| Path.new([letter] + path) }
+      @outgoing_arcs.map do |letter_sym, arc|
+        arc.find_final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
       end.flatten(1)
     end
   end

@@ -21,7 +21,7 @@ shared_examples 'GADDAG::Node#create_final_path/behaviour' do
 
   it 'adds the last letter to the last arc as final letter' do
     expect(follow_arcs(subject, letters_without_last_two).outgoing_arcs).to eq({
-      second_last_letter => GADDAG::Arc.new(GADDAG::Node.new).tap do |arc|
+      second_last_letter.to_sym => GADDAG::Arc.new(GADDAG::Node.new).tap do |arc|
         arc.add_final_letter(last_letter)
       end
     })

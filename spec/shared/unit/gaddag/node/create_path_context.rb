@@ -5,7 +5,7 @@ shared_context 'GADDAG::Node#create_path/context' do
   let(:letters) { %w[B ♢ R E A K] }
 
   def follow_arc(node, letter)
-    node.outgoing_arcs.fetch(letter).destination
+    node.outgoing_arcs.fetch(letter.to_sym).destination
   end
 
   def follow_arcs(node, letters)

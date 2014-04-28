@@ -18,7 +18,7 @@ shared_examples 'GADDAG::Node#create_arc/behaviour' do
   end
 
   it 'adds the arc to the mapping of outgoing arcs' do
-    expect(subject.outgoing_arcs).to include(letter => arc)
+    expect(subject.outgoing_arcs).to include(letter.to_sym => arc)
   end
 
   context 'when not provided with a destination node' do
