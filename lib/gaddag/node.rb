@@ -78,7 +78,6 @@ class GADDAG
     # a seperate path is created.
     # @return [Array<Path>] a list of final paths
     def find_final_paths
-      return [] if @outgoing_arcs.empty?
       @outgoing_arcs.map do |letter, arc|
         arc.find_final_paths.map { |path| Path.new([letter] + path) }
       end.flatten(1)
