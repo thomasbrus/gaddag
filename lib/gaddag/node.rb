@@ -49,8 +49,11 @@ class GADDAG
     # @see #create_path
     def create_final_path(letters, destinations = [])
       *initial_letters, second_last_letter, last_letter = *letters
-      last_node = create_path(initial_letters, destinations)
-      last_node.create_final_arc(second_last_letter, last_letter).destination
+      second_last_node = create_path(initial_letters, destinations)
+
+      (destinations[initial_letters.length] || Node.new).tap do |final_destination|
+        second_last_node.create_final_arc(second_last_letter, last_letter, final_destination)
+      end
     end
 
     # Follows a single outgoing arc for a given letter
