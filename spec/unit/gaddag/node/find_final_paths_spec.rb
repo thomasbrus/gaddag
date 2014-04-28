@@ -35,7 +35,7 @@ describe GADDAG::Node, '#find_final_paths' do
       end
     end
 
-    context 'when two final paths exist for the same prefix' do
+    context 'when two final paths exist with the same prefix' do
       before do
         subject.create_final_path(%w[F I N D])
         subject.create_final_path(%w[F I N D E R])

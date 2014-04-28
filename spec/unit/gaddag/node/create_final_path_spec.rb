@@ -16,8 +16,7 @@ describe GADDAG::Node, '#create_final_path' do
       let!(:destinations) { 6.times.map { GADDAG::Node.new } }
       let!(:final_node) { subject.create_final_path(letters, destinations) }
 
-      it 'creates the path for the given letters through the given destination nodes
-          while ommitting the last letter' do
+      it 'creates the path for the given letters through the given destination nodes' do
         expect(subject.follow_arcs(%w[B])).to equal(destinations[0])
         expect(subject.follow_arcs(%w[B ♢])).to equal(destinations[1])
         expect(subject.follow_arcs(%w[B ♢ R])).to equal(destinations[2])
