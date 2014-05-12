@@ -14,10 +14,8 @@ describe GADDAG::Node, '#find_final_paths' do
 
   context 'when some paths have been created' do
     context 'when none of the paths are final' do
-      before do
-        subject.create_path(%w[K A E R B])
-        subject.create_path(%w[A B C D])
-      end
+      before { subject.create_path(%w[K A E R B]) }
+      before { subject.create_path(%w[A B C D]) }
 
       it 'returns an empty list' do
         expect(final_paths).to be_empty
@@ -25,10 +23,8 @@ describe GADDAG::Node, '#find_final_paths' do
     end
 
     context 'when some of the paths are final' do
-      before do
-        subject.create_path(%w[K A E R B])
-        subject.create_final_path(%w[A B C D])
-      end
+      before { subject.create_path(%w[K A E R B]) }
+      before { subject.create_final_path(%w[A B C D]) }
 
       it 'returns the paths that are final' do
         expect(final_paths).to eq([GADDAG::Path.new(%w[A B C D])])
