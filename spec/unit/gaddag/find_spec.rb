@@ -10,7 +10,7 @@ describe GADDAG, '#find' do
     before { subject.add('AKIN') }
 
     context 'when searching for any word or substring that has not been added' do
-      it 'returns an empty list' do
+      it 'yields no results' do
         expect(subject.find('ZOMBIES')).to be_empty
       end
     end
