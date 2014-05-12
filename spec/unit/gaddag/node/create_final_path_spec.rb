@@ -17,11 +17,11 @@ describe GADDAG::Node, '#create_final_path' do
       let!(:final_node) { subject.create_final_path(letters, destinations) }
 
       it 'creates the path for the given letters through the given destination nodes' do
-        expect(subject.follow_arcs(%w[B])).to equal(destinations[0])
-        expect(subject.follow_arcs(%w[B ♢])).to equal(destinations[1])
-        expect(subject.follow_arcs(%w[B ♢ R])).to equal(destinations[2])
-        expect(subject.follow_arcs(%w[B ♢ R E])).to equal(destinations[3])
-        expect(subject.follow_arcs(%w[B ♢ R E A])).to equal(destinations[4])
+        expect(subject.follow_path(%w[B])).to equal(destinations[0])
+        expect(subject.follow_path(%w[B ♢])).to equal(destinations[1])
+        expect(subject.follow_path(%w[B ♢ R])).to equal(destinations[2])
+        expect(subject.follow_path(%w[B ♢ R E])).to equal(destinations[3])
+        expect(subject.follow_path(%w[B ♢ R E A])).to equal(destinations[4])
       end
     end
   end
@@ -34,9 +34,9 @@ describe GADDAG::Node, '#create_final_path' do
       let!(:final_node) { subject.create_final_path(letters, destinations) }
 
       it 'creates a path through the shortened list of destination nodes' do
-        expect(subject.follow_arcs(%w[B])).to equal(destinations[0])
-        expect(subject.follow_arcs(%w[B ♢])).to equal(destinations[1])
-        expect(subject.follow_arcs(%w[B ♢ R])).to equal(destinations[2])
+        expect(subject.follow_path(%w[B])).to equal(destinations[0])
+        expect(subject.follow_path(%w[B ♢])).to equal(destinations[1])
+        expect(subject.follow_path(%w[B ♢ R])).to equal(destinations[2])
       end
     end
   end

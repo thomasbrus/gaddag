@@ -2,7 +2,7 @@
 
 require 'gaddag'
 
-describe GADDAG::Node, '#follow_arcs' do
+describe GADDAG::Node, '#follow_path' do
   subject { GADDAG::Node.new }
 
   let(:letter) { 'L' }
@@ -14,7 +14,7 @@ describe GADDAG::Node, '#follow_arcs' do
       before { subject.create_path(letters) }
 
       it 'returns itself' do
-        expect(subject.follow_arcs(letters)).to equal(subject)
+        expect(subject.follow_path(letters)).to equal(subject)
       end
     end
 
@@ -24,7 +24,7 @@ describe GADDAG::Node, '#follow_arcs' do
       before { subject.create_path(letters, destinations) }
 
       it 'returns the destination node that the path of letters leads to' do
-        expect(subject.follow_arcs(letters)).to equal(destinations.last)
+        expect(subject.follow_path(letters)).to equal(destinations.last)
       end
     end
   end
@@ -35,7 +35,7 @@ describe GADDAG::Node, '#follow_arcs' do
     before { subject.create_path(letters) }
 
     it 'raises an error indicating that no such path exists' do
-      expect { subject.follow_arcs(other_letters) }.to raise_error(KeyError)
+      expect { subject.follow_path(other_letters) }.to raise_error(KeyError)
     end
   end
 end

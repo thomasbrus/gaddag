@@ -66,11 +66,12 @@ class GADDAG
 
     # Recursively follows a list of letters
     # @param letters [Array<String>] the letters to be followed
+    # @raise [KeyError] if an outgoing arc does not exist for a given letter
+    #   at the corresponding node
     # @return [Node] the destination node that the path of letters leads to
-    # @see #follow_arc
-    def follow_arcs(letters)
+    def follow_path(letters)
       return self if letters.empty?
-      follow_arc(letters[0]).follow_arcs(letters[1..-1])
+      follow_arc(letters[0]).follow_path(letters[1..-1])
     end
 
     # Returns all paths from this node that are final. The set of final paths are

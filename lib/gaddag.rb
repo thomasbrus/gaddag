@@ -36,7 +36,7 @@ class GADDAG
   # @return [Array<String>] all matching words
   def find(substring)
     reversed_prefix_letters = substring.reverse.chars
-    @root.follow_arcs(reversed_prefix_letters).find_final_paths.map do |path|
+    @root.follow_path(reversed_prefix_letters).find_final_paths.map do |path|
       Path.new(reversed_prefix_letters + path).to_word.to_s
     end
   rescue KeyError
