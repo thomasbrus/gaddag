@@ -26,6 +26,13 @@ class GADDAG
       @outgoing_arcs[letter.to_sym] ||= Arc.new(destination)
     end
 
+    # Checks whether an outgoing arc for the given letter exists
+    # @param letter [String] the letter to check for
+    # @return [Boolean] whether the outgoing arc exists
+    def arc?(letter)
+      @outgoing_arcs.key?(letter.to_sym)
+    end
+
     # Creates a final outgoing arc for a letter to a destination node. Effectively
     # this will add a final letter to the outgoing arc, indicating that a valid
     # word can be formed with it.
@@ -44,6 +51,15 @@ class GADDAG
       end
     end
 
+    # Checks whether a path exists for the given list of letters
+    # @param letters [Array<String>] the letter path to check for
+    # @return [Boolean] whether the path exists
+    def path?(letters)
+      return true if letters.empty?
+      return false unless arc?(letters.first)
+      follow_arc(letters.first).path?(letters[1..-1])
+    end
+
     # Creates a path for a list of letters and optional destination nodes,
     # ommiting the last node, and marking the last letter as final
     # @see #create_path
@@ -53,6 +69,15 @@ class GADDAG
 
       (destinations[initial_letters.length] || Node.new).tap do |final_destination|
         second_last_node.create_final_arc(second_last_letter, last_letter, final_destination)
+      end
+    end
+
+    # Checks whether a final path exists for the given list of letters
+    # @param letters [Array<String>] the letter path to check for
+    # @return [Boolean] whether the final path exists
+    def final_path?(letters)
+      path?(letters[0..-3]) && follow_path(letters[0..-3]).final_paths.any? do |final_path|
+        final_path == Path.new(letters[-2..-1])
       end
     end
 
