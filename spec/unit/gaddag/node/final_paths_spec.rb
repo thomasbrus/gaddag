@@ -2,9 +2,9 @@
 
 require 'gaddag'
 
-describe GADDAG::Node, '#find_final_paths' do
+describe GADDAG::Node, '#final_paths' do
   subject { GADDAG::Node.new }
-  let(:final_paths) { subject.find_final_paths }
+  let(:final_paths) { subject.final_paths }
 
   context 'when no paths have been created' do
     it 'returns an empty list' do

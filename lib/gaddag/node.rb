@@ -78,9 +78,9 @@ class GADDAG
     # all paths for which the last arc includes a final letter. For each final letter
     # a seperate path is created.
     # @return [Array<Path>] a list of final paths
-    def find_final_paths
+    def final_paths
       @outgoing_arcs.map do |letter_sym, arc|
-        arc.find_final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
+        arc.final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
       end.flatten(1)
     end
   end
