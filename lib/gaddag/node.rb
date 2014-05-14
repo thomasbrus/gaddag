@@ -104,9 +104,9 @@ class GADDAG
     # a seperate path is created.
     # @return [Array<Path>] a list of final paths
     def final_paths
-      @outgoing_arcs.map do |letter_sym, arc|
-        arc.final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
-      end.flatten(1)
+      @outgoing_arcs.reduce([]) do |paths, (letter_sym, arc)|
+        paths += arc.final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
+      end
     end
   end
 
