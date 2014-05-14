@@ -31,7 +31,7 @@ class GADDAG
     # Returns the suffix of this path
     # @return [Array<String>] the last portion of this path: the suffix
     def suffix_letters
-      return [] unless include_delimiter?
+      return [] if !include_delimiter? || @letters.last == DELIMITER
       @letters.join.split(DELIMITER).last.chars
     end
 
@@ -53,6 +53,13 @@ class GADDAG
     # @return [Array<String>] the letters in this path
     def to_ary
       @letters
+    end
+
+    # Tells whether the path starts with the given letters
+    # @param letters [Array<String>] the letters to check for
+    # @return [Boolean] whether the path starts with the letters given
+    def start_with?(letters)
+      @letters.join.start_with?(letters.join)
     end
 
     # Constructs a word from the partially reversed letter path

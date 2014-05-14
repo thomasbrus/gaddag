@@ -16,6 +16,14 @@ describe GADDAG::Path, '#suffix_letters' do
     end
   end
 
+  context 'when the path ends with a delimiter' do
+    subject { GADDAG::Path.new(%w[K A E R B] + [GADDAG::Path::DELIMITER]) }
+
+    it 'returns an empty list' do
+      expect(subject.suffix_letters).to be_empty
+    end
+  end
+
   context 'when the path does not include a delimiter' do
     subject { GADDAG::Path.new(%w[K A E R B]) }
 

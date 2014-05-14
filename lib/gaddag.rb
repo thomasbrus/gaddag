@@ -22,7 +22,7 @@ class GADDAG
   # @param word [String] the word to be added
   # @return [GADDAG] the GADDAG instance
   def add(word)
-    @root.create_final_path(word.reverse.chars)
+    @root.create_final_path(word.chars.reverse + [Path::DELIMITER])
 
     Word.new(word.chars).to_delimited_paths.each do |path|
       @root.create_final_path(path.letters)
