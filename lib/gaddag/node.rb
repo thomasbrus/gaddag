@@ -76,8 +76,10 @@ class GADDAG
     # @param letters [Array<String>] the letter path to check for
     # @return [Boolean] whether the final path exists
     def final_path?(letters)
-      path?(letters[0..-3]) && follow_path(letters[0..-3]).final_paths.any? do |final_path|
-        final_path == Path.new(letters[-2..-1])
+      *initial_letters, second_last_letter, last_letter = *letters
+
+      path?(initial_letters) && follow_path(initial_letters).final_paths.any? do |path|
+        path == Path.new([second_last_letter, last_letter])
       end
     end
 
