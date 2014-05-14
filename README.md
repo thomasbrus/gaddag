@@ -33,6 +33,6 @@ In order to find all words that contain a given substring, use the `find` method
 gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 ```
 
-License
+## License
 
 See [LICENSE.txt](LICENSE.txt).
