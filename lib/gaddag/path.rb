@@ -36,7 +36,7 @@ class GADDAG
     end
 
     # Tells whether the path includes {GADDAG::DELIMITER}
-    # @return [true, false] whether this path includes the delimiter
+    # @return [Boolean] whether this path includes the delimiter
     def include_delimiter?
       @letters.include?(DELIMITER)
     end
