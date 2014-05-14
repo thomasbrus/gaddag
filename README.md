@@ -27,16 +27,12 @@ IO.foreach('/usr/share/dict/words').map(&:chomp).each do |word|
 end
 ```
 
-It is possible to remove words as well. If no matching word was found,
-`nil` is returned.
-
-```ruby
-gaddag.remove('television') # => 'television'
-gaddag.remove('fargo') # => nil
-```
-
 In order to find all words that contain a given substring, use the `find` method:
 
 ```ruby
 gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 ```
+
+License
+
+See [LICENSE.txt](LICENSE.txt).
