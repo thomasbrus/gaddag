@@ -10,6 +10,12 @@ is move generation in Scrabble. The data structure is explained in more detail i
 [![Dependency Status](https://gemnasium.com/thomasbrus/gaddag.png)](https://gemnasium.com/thomasbrus/gaddag)
 [![Code Climate](https://codeclimate.com/github/thomasbrus/gaddag.png)](https://codeclimate.com/github/thomasbrus/gaddag)
 
+## Installation
+
+The `gaddag` gem is available via Rubygems. Install the gem by adding it to your Gemfile or by running:
+
+    gem install gaddag
+
 ## Usage
 
 Initializing the GADDAG is simple:
@@ -39,7 +45,7 @@ gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 
 ## Examples
 
-    $ bundle exec ruby examples/dictionary.rb
+- [dictionary.rb](examples/dictionary.rb)
 
 ## License
 
