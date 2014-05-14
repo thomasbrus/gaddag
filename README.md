@@ -33,6 +33,10 @@ In order to find all words that contain a given substring, use the `find` method
 gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 ```
 
+## Examples
+
+    $ bundle exec ruby examples/dictionary.rb 
+
 ## License
 
 See [LICENSE.txt](LICENSE.txt).
