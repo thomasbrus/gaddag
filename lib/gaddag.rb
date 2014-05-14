@@ -35,11 +35,13 @@ class GADDAG
   # @param substring [String] the substring to search for
   # @return [Array<String>] all matching words
   def find(substring)
-    reversed_prefix_letters = substring.reverse.chars
-    @root.follow_path(reversed_prefix_letters).find_final_paths.map do |path|
-      Path.new(reversed_prefix_letters + path).to_word.to_s
+    first_letter, second_letter, *last_letters = *substring.chars
+    return [] unless @root.path?(last_letters.reverse)
+
+    @root.follow_path(last_letters.reverse).final_paths.select do |path|
+      path.start_with?([second_letter, first_letter])
+    end.map do |path|
+      Path.new(last_letters.reverse + path).to_word.to_s
     end.uniq
-  rescue KeyError
-    []
   end
 end
