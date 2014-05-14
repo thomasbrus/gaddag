@@ -21,7 +21,7 @@ class GADDAG
     # arc is followed
     # @param destination [Node] the node to which this arc should point
     # @return [Arc] the newly created arc or an existing arc if one already
-    # exists for this letter
+    #   exists for this letter
     def create_arc(letter, destination = Node.new)
       @outgoing_arcs[letter.to_sym] ||= Arc.new(destination)
     end
