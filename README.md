@@ -6,7 +6,7 @@ each word can be constructed from the root via any of its reversed prefixes. Its
 is move generation in Scrabble. The data structure is explained in more detail in
 [the original research paper](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf).
 
-[![Build Status](https://secure.travis-ci.org/thomasbrus/gaddag.png?branch=master)](http://travis-ci.org/mbj/mutant)
+[![Build Status](https://secure.travis-ci.org/thomasbrus/gaddag.png?branch=master)](http://travis-ci.org/thomasbrus/gaddag)
 [![Dependency Status](https://gemnasium.com/thomasbrus/gaddag.png)](https://gemnasium.com/thomasbrus/gaddag)
 [![Code Climate](https://codeclimate.com/github/thomasbrus/gaddag.png)](https://codeclimate.com/github/thomasbrus/gaddag)
 
