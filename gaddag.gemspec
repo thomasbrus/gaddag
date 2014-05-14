@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |spec|
   spec.name          = 'gaddag'
-  spec.version       = '0.1.0'
+  spec.version       = '0.1.1'
   spec.authors       = ['Thomas Brus']
   spec.email         = ['thomas.brus@me.com']
   spec.summary       = %q{Implementation of the GADDAG data structure}
