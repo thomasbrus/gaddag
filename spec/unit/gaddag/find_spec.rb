@@ -23,10 +23,18 @@ describe GADDAG, '#find' do
       end
     end
 
-    context 'when searching for a full word' do
+    context 'when searching for the letter E' do
+      let(:results) { subject.find('E') }
+
+      it 'yields one result, namely BREAK' do
+        expect(results).to eq(['BREAK'])
+      end
+    end
+
+    context 'when searching for the word BREAK' do
       let(:results) { subject.find('BREAK') }
 
-      it 'yields one result, namely the word that was searched for' do
+      it 'yields one result, namely BREAK' do
         expect(results).to eq(['BREAK'])
       end
     end
