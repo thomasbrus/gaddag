@@ -6,6 +6,10 @@ each word can be constructed from the root via any of its reversed prefixes. Its
 is move generation in Scrabble. The data structure is explained in more detail in
 [the original research paper](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf).
 
+[![Build Status](https://secure.travis-ci.org/thomasbrus/gaddag.png?branch=master)](http://travis-ci.org/mbj/mutant)
+[![Dependency Status](https://gemnasium.com/thomasbrus/gaddag.png)](https://gemnasium.com/thomasbrus/gaddag)
+[![Code Climate](https://codeclimate.com/github/thomasbrus/gaddag.png)](https://codeclimate.com/github/thomasbrus/gaddag)
+
 ## Usage
 
 Initializing the GADDAG is simple:
@@ -35,7 +39,7 @@ gaddag.find('elevi') => # ["televiewer", "television", "televisual"]
 
 ## Examples
 
-    $ bundle exec ruby examples/dictionary.rb 
+    $ bundle exec ruby examples/dictionary.rb
 
 ## License
 
