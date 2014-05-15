@@ -12,7 +12,8 @@ is move generation in Scrabble. The data structure is explained in more detail i
 
 ## Installation
 
-The `gaddag` gem is available via Rubygems. Install the gem by adding it to your Gemfile or by running:
+The `gaddag` gem is [available via Rubygems](https://rubygems.org/gems/gaddag).
+Install the gem by adding it to your Gemfile or by running:
 
     gem install gaddag
 
