@@ -6,9 +6,10 @@ each word can be constructed from the root via any of its reversed prefixes. Its
 is move generation in Scrabble. The data structure is explained in more detail in
 [the original research paper](http://www.ericsink.com/downloads/faster-scrabble-gordon.pdf).
 
-[![Build Status](https://secure.travis-ci.org/thomasbrus/gaddag.png?branch=master)](http://travis-ci.org/thomasbrus/gaddag)
-[![Dependency Status](https://gemnasium.com/thomasbrus/gaddag.png)](https://gemnasium.com/thomasbrus/gaddag)
-[![Code Climate](https://codeclimate.com/github/thomasbrus/gaddag.png)](https://codeclimate.com/github/thomasbrus/gaddag)
+[![Gem Version](https://badge.fury.io/rb/gaddag.svg)](https://rubygems.org/gems/gaddag)
+[![Build Status](http://img.shields.io/travis/thomasbrus/gaddag/master.svg)](http://travis-ci.org/thomasbrus/gaddag?branch=master)
+[![Dependency Status](http://img.shields.io/gemnasium/thomasbrus/gaddag.svg)](https://gemnasium.com/thomasbrus/gaddag)
+[![Code Climate](http://img.shields.io/codeclimate/github/thomasbrus/gaddag.svg)](https://codeclimate.com/github/thomasbrus/gaddag)
 
 ## Installation
 
