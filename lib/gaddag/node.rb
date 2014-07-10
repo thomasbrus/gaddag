@@ -64,7 +64,7 @@ class GADDAG
     # ommiting the last node, and marking the last letter as final
     # @see #create_path
     def create_final_path(letters, destinations = [])
-      *initial_letters, second_last_letter, last_letter = *letters
+      *initial_letters, second_last_letter, last_letter = *letters.dup
       second_last_node = create_path(initial_letters, destinations)
 
       (destinations[initial_letters.length] || Node.new).tap do |final_destination|
@@ -76,7 +76,7 @@ class GADDAG
     # @param letters [Array<String>] the letter path to check for
     # @return [Boolean] whether the final path exists
     def final_path?(letters)
-      *initial_letters, second_last_letter, last_letter = *letters
+      *initial_letters, second_last_letter, last_letter = *letters.dup
 
       path?(initial_letters) && follow_path(initial_letters).final_paths.any? do |path|
         path == Path.new([second_last_letter, last_letter])
