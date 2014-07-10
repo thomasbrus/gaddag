@@ -25,7 +25,7 @@ class GADDAG
     @root.create_final_path(word.chars.reverse + [Path::DELIMITER])
 
     Word.new(word.chars).to_delimited_paths.each do |path|
-      @root.create_final_path(path.letters)
+      @root.create_final_path(path)
     end
 
     self
