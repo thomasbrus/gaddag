@@ -14,6 +14,14 @@ describe GADDAG::Node, '#path?' do
     end
   end
 
+  context 'when a partial path exists for the given list of letters' do
+    before { subject.create_path(letters[0..-2]) }
+
+    it 'returns false' do
+      expect(subject.path?(letters)).to eq(false)
+    end
+  end
+
   context 'when a path does not exist for the given list of letters' do
     it 'returns false' do
       expect(subject.path?(letters)).to eq(false)
