@@ -32,10 +32,8 @@ the reversed prefixes of the word. Note that this may take some time when adding
 a large number of words.
 
 ```ruby
-IO.foreach('/usr/share/dict/words').map(&:chomp).each do |word|
-  if word.length == 10
-    gaddag.add(word) # => #<Gaddag:0x007fc6c24367b0 ... >
-  end
+File.readlines('/usr/share/dict/words') do |word|
+  gaddag.add(word.strip) if word.strip.length == 10 # => #<Gaddag:0x007fc6c24367b0 ... >
 end
 ```
 
