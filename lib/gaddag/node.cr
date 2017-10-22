@@ -1,19 +1,18 @@
 # encoding: utf-8
 
 class GADDAG
-
   # Represents a node in the GADDAG data structure
   class Node
     # A mapping of letters to arcs
-    attr_reader :outgoing_arcs
+    getter :outgoing_arcs
 
     # Two nodes are equal if they have the same set of outgoing arcs
-    send :include, Equalizer.new(:outgoing_arcs)
+    # send :include, Equalizer.new(:outgoing_arcs)
 
     # Initializes a GADDAG node
     # @return [Node]
     def initialize
-      @outgoing_arcs = {}
+      @outgoing_arcs = Hash(Symbol, Arc).new
     end
 
     # Creates an outgoing arc for a letter to a destination node
@@ -45,7 +44,7 @@ class GADDAG
     # @param letters [Array<String>] the letters for which the path should be build
     # @param destinations [Array<Node>] the destination nodes which the path should visit
     # @return [Node] the lastly created destination ode
-    def create_path(letters, destinations = [])
+    def create_path(letters, destinations = Array.new)
       letters.zip(destinations).inject(self) do |node, (letter, destination)|
         node.create_arc(letter, destination || Node.new).destination
       end
@@ -63,8 +62,11 @@ class GADDAG
     # Creates a path for a list of letters and optional destination nodes,
     # ommiting the last node, and marking the last letter as final
     # @see #create_path
-    def create_final_path(letters, destinations = [])
-      *initial_letters, second_last_letter, last_letter = *letters.dup
+    def create_final_path(letters, destinations = Array.new)
+      initial_letters = letters[0..-3]
+      second_last_letter = letters[-2]
+      last_letter = letters[-1]
+
       second_last_node = create_path(initial_letters, destinations)
 
       (destinations[initial_letters.length] || Node.new).tap do |final_destination|
@@ -76,7 +78,9 @@ class GADDAG
     # @param letters [Array<String>] the letter path to check for
     # @return [Boolean] whether the final path exists
     def final_path?(letters)
-      *initial_letters, second_last_letter, last_letter = *letters.dup
+      initial_letters = letters[0..-3]
+      second_last_letter = letters[-2]
+      last_letter = letters[-1]
 
       path?(initial_letters) && follow_path(initial_letters).final_paths.any? do |path|
         path == Path.new([second_last_letter, last_letter])
@@ -106,10 +110,9 @@ class GADDAG
     # a seperate path is created.
     # @return [Array<Path>] a list of final paths
     def final_paths
-      @outgoing_arcs.reduce([]) do |paths, (letter_sym, arc)|
+      @outgoing_arcs.reduce(Array.new) do |paths, (letter_sym, arc)|
         paths += arc.final_paths.map { |path| Path.new([letter_sym.to_s] + path) }
       end
     end
   end
-
 end

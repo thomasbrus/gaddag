@@ -1,17 +1,16 @@
 # encoding: utf-8
 
 class GADDAG
-
   # Represents a (final) path within the GADDAG data structure
   class Path
     # The letters that make up this GADDAG path
-    attr_reader :letters
+    property :letters
 
     # Two paths are equal if they contain the same letters in the same order
-    send :include, Equalizer.new(:letters)
+    # send :include, Equalizer.new(:letters)
 
     # The path delimiter that seperates the reversed prefix and the suffix
-    DELIMITER = '♢'.freeze
+    DELIMITER = "♢".freeze
 
     # Initializes a GADDAG path
     # @param letters [Array<String>] a list of letters, containing a reversed prefix,
@@ -24,14 +23,14 @@ class GADDAG
     # Returns the reversed prefix of this path
     # @return [Array<String>] the first portion of this path: the reversed prefix
     def reversed_prefix_letters
-      return [] if @letters.empty?
+      return Array.new if @letters.empty?
       @letters.join.split(DELIMITER).first.chars
     end
 
     # Returns the suffix of this path
     # @return [Array<String>] the last portion of this path: the suffix
     def suffix_letters
-      return [] if !include_delimiter? || @letters.last == DELIMITER
+      return Array.new if !include_delimiter? || @letters.last == DELIMITER
       @letters.join.split(DELIMITER).last.chars
     end
 
@@ -44,7 +43,7 @@ class GADDAG
     # Returns a string presentation of this path
     # @return the string represtentation, letters are delimited with '>'
     def to_s
-      @letters.join(' > ')
+      @letters.join(" > ")
     end
 
     # Coerces into an Array.
@@ -68,5 +67,4 @@ class GADDAG
       Word.new(reversed_prefix_letters.reverse + suffix_letters)
     end
   end
-
 end

@@ -1,16 +1,16 @@
 # encoding: utf-8
 
-require 'equalizer'
+# require "equalizer"
 
-require_relative 'gaddag/arc'
-require_relative 'gaddag/node'
-require_relative 'gaddag/path'
-require_relative 'gaddag/word'
+require "./gaddag/arc"
+require "./gaddag/node"
+require "./gaddag/path"
+require "./gaddag/word"
 
 # Implementation of the GADDAG data structure
 class GADDAG
   # The root node
-  attr_reader :root
+  getter :root
 
   # Initializes a GADDAG
   # @return [GADDAG]
@@ -35,8 +35,11 @@ class GADDAG
   # @param substring [String] the substring to search for
   # @return [Array<String>] all matching words
   def find(substring)
-    first_letter, second_letter, *last_letters = *substring.chars
-    return [] unless @root.path?(last_letters.reverse)
+    first_letter = substring.chars[0]
+    second_letter = substring.chars[1]
+    last_letters = substring.chars[2..-1]
+
+    return Array.new unless @root.path?(last_letters.reverse)
 
     @root.follow_path(last_letters.reverse).final_paths.select do |path|
       path.start_with?([second_letter, first_letter])
