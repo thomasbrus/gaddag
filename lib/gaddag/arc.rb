@@ -6,21 +6,21 @@ class GADDAG
   # Represents an arc pointing to a destination node with optional final letters
   class Arc
     # The destination node
-    getter :destination
+    attr_reader :destination
 
     # A set of letters which form a word after being appended to the letter path
-    getter :final_letters
+    attr_reader :final_letters
 
     # Two arcs are equal if they point to the same destination node and contain
     # the same set of final letters
-    # send :include, Equalizer.new(:destination, :final_letters)
+    send :include, Equalizer.new(:destination, :final_letters)
 
     # Initializes a GADDAG arc
     # @param destination [Node] the destination node
     # @return [Arc]
     def initialize(destination)
       @destination = destination
-      @final_letters = Set(String).new
+      @final_letters = Set.new
     end
 
     # Adds a final letter to the arc. A final letter is a letter that,
